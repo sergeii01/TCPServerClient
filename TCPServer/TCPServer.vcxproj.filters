@@ -24,10 +24,10 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="socket.h">
+    <ClInclude Include="..\Include\socket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PasswdGen.h">
+    <ClInclude Include="..\Include\PasswdGen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,10 +38,10 @@
     <ClCompile Include="TCPServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="socket.cpp">
+    <ClCompile Include="..\Include\PasswdGen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PasswdGen.cpp">
+    <ClCompile Include="..\Include\socket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

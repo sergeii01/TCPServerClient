@@ -2,8 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "..\TCPServer\socket.h"
-
+#include "..\Include\socket.h"
 
 
 int main()

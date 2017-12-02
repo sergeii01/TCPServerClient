@@ -3,7 +3,8 @@
 #include <winsock2.h>
 #include <process.h>
 #include <iostream>
-#include "PasswdGen.h"
+//#include "PasswdGen.h"
+#include "..\Include\PasswdGen.h"
 
 
 using namespace std;

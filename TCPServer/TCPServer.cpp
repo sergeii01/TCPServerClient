@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "socket.h"
-#include "PasswdGen.h"
+#include "..\Include\PasswdGen.h"
 
 
 void showpwd();
