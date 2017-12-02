@@ -73,4 +73,17 @@ string PasswdGen::getNextPWD()
 		return "err";
 }
 
+string PasswdGen::getNextPWD(int PWDCOUNT)
+{
+	string pwds;
+	if (genStop == 0)
+	{
+		for (int i = 0; i < PWDCOUNT; i++)
+			pwds = pwds + '\1' + ShowPWD(CalcPWD(PASSWORD++));
+		return pwds;
+	}
+	else
+		return "err";
+}
+
 

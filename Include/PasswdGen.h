@@ -24,5 +24,6 @@ public: PasswdGen();
 		PasswdGen(int MinPasswordLength, int MaxPasswordLength);
 		PasswdGen(string Charset);
 		string getNextPWD();
+		string getNextPWD(int PWDCOUNT);
 		int genStop = 0;
 };

@@ -53,7 +53,7 @@ int Ssocket::runServer(string serverIP, int serverPORT)
 			cout << "Invalid client socket" << GetLastError() <<endl;
 			continue;
 		}
-		client2.pwd = pg.getNextPWD();
+		client2.pwd = pg.getNextPWD(10);
 		//HANDLE h = (HANDLE) _beginthreadex(0, 0, ServClient, (void*)&client, 0, 0);
 		HANDLE h = (HANDLE)_beginthreadex(0, 0, ServClient, (void*)&client2, 0, 0);
 		CloseHandle(h);
@@ -159,6 +159,19 @@ int Ssocket::createSock()
 		return 2;
 	}
 	
+	char enable = '1';
+
+	if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0)
+		//error("setsockopt(SO_REUSEADDR) failed");
+		return 3;
+
+	linger lin;
+	unsigned int y = sizeof(lin);
+	lin.l_onoff = 1;
+	lin.l_linger = 0;
+	if (setsockopt(sock, SOL_SOCKET, SO_LINGER, (char *)(&lin), y) < 0)
+		return 4;
+
 	return 0;
 }
 

@@ -10,9 +10,9 @@ void showpwd();
 
 int main()
 {
-	//showpwd();
-	//PasswdGen pg("01");
-	//PasswdGen pg;
+	showpwd();
+	PasswdGen pg("01");
+//	PasswdGen pg;
 	Ssocket ServerSocket;
 	ServerSocket.runServer("0.0.0.0", 2222);
 	return 0;
