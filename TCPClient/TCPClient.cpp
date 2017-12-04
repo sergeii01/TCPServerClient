@@ -2,27 +2,27 @@
 //
 
 #include "stdafx.h"
+
 #include "..\Include\socket.h"
 
-
+using namespace std;
 int main()
 {
 	Ssocket Sclient;
 	Sclient.connectClient("127.0.0.1", 2222);
 
-	SOCKET * sPTR = Sclient.getSock();
-	SOCKET sock = *sPTR;
+	Sclient.receiveData(200);
+	Sleep(100);
+	Sclient.sendData("Test1");
 
-	char ptr[100];
-	for (int i = 0; i<100; i++)
+
+	/*for (int i = 0; i<100; i++)
 	{
-		Sleep(300);
-		sprintf(ptr, "Heartbeat %d", i);
-		send(sock, ptr, sizeof(ptr), 0); // nuzhna proverka
-
+		//Sclient.sendData("test1" + std::to_string(i));
+		
 	}
-	shutdown(sock, SD_BOTH);
-	closesocket(sock);
+	*/
+	Sclient.closeSocket();
 
 	return 0;
 

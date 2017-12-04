@@ -1,5 +1,6 @@
 #include "socket.h"
 
+SOCKET Ssocket::sock = NULL;
 
 Ssocket::Ssocket()
 {
@@ -10,7 +11,7 @@ Ssocket::~Ssocket()
 {
 }
 
-int Ssocket::runServer(string serverIP, int serverPORT)
+int Ssocket::runServer(std::string serverIP, int serverPORT)
 {
 	setServerIPstr(serverIP);
 	setServerPORTstr(serverPORT);
@@ -62,7 +63,7 @@ int Ssocket::runServer(string serverIP, int serverPORT)
 	return 0;
 }
 
-int Ssocket::connectClient(string serverIP, int serverPORT)
+int Ssocket::connectClient(std::string serverIP, int serverPORT)
 {
 	setServerIPstr(serverIP);
 	setServerPORTstr(serverPORT);
@@ -90,12 +91,12 @@ int Ssocket::connectClient(string serverIP, int serverPORT)
 	return 0;
 }
 
-string Ssocket::getServerIPstr()
+std::string Ssocket::getServerIPstr()
 {
 	return string();
 }
 
-string Ssocket::getServerPORTstr()
+std::string Ssocket::getServerPORTstr()
 {
 	return string();
 }
@@ -107,28 +108,85 @@ SOCKET * Ssocket::getSock()
 	return ptrSock;
 }
 
-unsigned int Ssocket::ServClient(void * data)
+unsigned int __stdcall Ssocket::ServClient(void * data)
 {
-	//SOCKET Client = *((SOCKET*)data);
 	SockAccept Client = *((SockAccept*)data);
 	cout << "Client connected" << endl;
-
-	char chunk[200];
-	while (recv(Client.client, chunk, 200, 0))
-	{
-		//printf("%s \t %d\n", chunk, GetCurrentThreadId());
-		cout << chunk << "\t" << Client.pwd << "\t" << GetCurrentThreadId() << endl;
-		Sleep(50);// < chunk << "\t" << GetCurrentThreadId() << endl;
-	}
-	cout << "end connection" << endl;
-	closesocket(Client.client);
 	
-	//_endthreadex(0);
+	if (sendData(Client.client, Client.pwd)!=0)
+		closesocket(Client.client);
+	Sleep(100);
+
+	string ats = "";
+	receiveData(Client.client, 100);
+	closeSocket(Client.client);
+
 	return 0;
 }
 
+int Ssocket::sendData(std::string data)
+{
 
-int Ssocket::setServerIPstr(string serverIP)
+	char ptr[100];
+	sprintf(ptr, data.c_str());
+	Sleep(200);
+	if (send(sock, ptr, sizeof(ptr), 0))
+		return 0;
+	else
+		return 1;
+}
+
+int Ssocket::sendData(SOCKET s, std::string data)
+{
+	char ptr[100];
+	sprintf(ptr, data.c_str());
+	Sleep(200);
+	if (send(s, ptr, sizeof(ptr), 0))
+		return 0;
+	else
+		return 1;
+}
+
+std::string Ssocket::receiveData(int timeout)
+{
+//	SockAccept Client = *((SockAccept*)data);
+//	cout << "Client connected" << endl;
+
+	char chunk[200];
+	while (recv(sock, chunk, 200, 0))
+	{
+		cout << chunk << "\t" /*<< Client.pwd << "\t" << GetCurrentThreadId()*/ << endl;
+		Sleep(timeout);
+	}
+	//cout << "end connection" << endl;
+	return std::string(chunk);
+}
+
+std::string Ssocket::receiveData(SOCKET s, int timeout)
+{
+	char chunk[200];
+	while (recv(s, chunk, 200, 0))
+	{
+		cout << chunk << "\t" /*<< Client.pwd << "\t" << GetCurrentThreadId()*/ << endl;
+		Sleep(timeout);
+	}
+	return std::string(chunk);
+}
+
+void Ssocket::closeSocket()
+{
+	shutdown(sock, SD_BOTH);
+	closesocket(sock);
+}
+
+void Ssocket::closeSocket(SOCKET s)
+{
+	shutdown(s, SD_BOTH);
+	closesocket(s);
+}
+
+
+int Ssocket::setServerIPstr(std::string serverIP)
 {
 	addr.sin_addr.S_un.S_addr = inet_addr(serverIP.c_str());
 	return 0;

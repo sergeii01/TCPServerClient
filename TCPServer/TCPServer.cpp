@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "socket.h"
+#include "..\Include\socket.h"
 #include "..\Include\PasswdGen.h"
 
 
