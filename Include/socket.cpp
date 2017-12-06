@@ -113,13 +113,14 @@ unsigned int __stdcall Ssocket::ServClient(void * data)
 	SockAccept Client = *((SockAccept*)data);
 	cout << "Client connected" << endl;
 	
+	Sleep(20);
 	if (sendData(Client.client, Client.pwd)!=0)
-		closesocket(Client.client);
-	Sleep(100);
+		//closesocket(Client.client);
+	Sleep(200);
 
 	string ats = "";
-	receiveData(Client.client, 100);
-	closeSocket(Client.client);
+	receiveData(Client.client, 200);
+	//closeSocket(Client.client);
 
 	return 0;
 }
@@ -139,7 +140,8 @@ int Ssocket::sendData(std::string data)
 int Ssocket::sendData(SOCKET s, std::string data)
 {
 	char ptr[100];
-	sprintf(ptr, data.c_str());
+	
+	sprintf(ptr, to_string(s).c_str(), '\t' ,data.c_str());
 	Sleep(200);
 	if (send(s, ptr, sizeof(ptr), 0))
 		return 0;
@@ -157,6 +159,7 @@ std::string Ssocket::receiveData(int timeout)
 	{
 		cout << chunk << "\t" /*<< Client.pwd << "\t" << GetCurrentThreadId()*/ << endl;
 		Sleep(timeout);
+		break;
 	}
 	//cout << "end connection" << endl;
 	return std::string(chunk);
@@ -165,11 +168,17 @@ std::string Ssocket::receiveData(int timeout)
 std::string Ssocket::receiveData(SOCKET s, int timeout)
 {
 	char chunk[200];
-	while (recv(s, chunk, 200, 0))
+	int check = 0;
+	//while (recv(s, chunk, 200, 0)) 
+	do
 	{
-		cout << chunk << "\t" /*<< Client.pwd << "\t" << GetCurrentThreadId()*/ << endl;
+		check = recv(s, chunk, 200, 0);
+		cout << chunk << "XXXX\t" /*<< Client.pwd << "\t" << GetCurrentThreadId()*/ <<to_string(check)<< '\t' << GetLastError() << '\t\n' << endl;
+		if (GetLastError() != 0)
+			closeSocket(s);
 		Sleep(timeout);
-	}
+
+	} while (check < 0);
 	return std::string(chunk);
 }
 
