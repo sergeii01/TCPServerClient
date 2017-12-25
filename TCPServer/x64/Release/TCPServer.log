@@ -1,0 +1,18 @@
+﻿  stdafx.cpp
+  PasswdGen.cpp
+..\Include\PasswdGen.cpp(15): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  socket.cpp
+c:\users\sergeii\source\repos\github\tcpserverclient\include\socket.h(74): warning C4091: 'static ': ignored on left of 'Ssocket' when no variable is declared
+..\Include\socket.cpp(127): warning C4390: ';': empty controlled statement found; is this the intent?
+..\Include\socket.cpp(147): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\Include\socket.cpp(159): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+..\Include\socket.cpp(224): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\um\winsock2.h(1828): note: see declaration of 'inet_addr'
+  TCPServer.cpp
+c:\users\sergeii\source\repos\github\tcpserverclient\tcpserver\..\Include\socket.h(74): warning C4091: 'static ': ignored on left of 'Ssocket' when no variable is declared
+  Generating code
+  All 162 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  TCPServer.vcxproj -> C:\Users\sergeii\Source\Repos\GitHub\TCPServerClient\x64\Release\TCPServer.exe

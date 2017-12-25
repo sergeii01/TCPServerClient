@@ -13,10 +13,24 @@
 #define SendDataLenght 100
 #define SendDataTimeout 200
 
-struct SockAccept
+/*struct SockAccept
 {
 	SOCKET client;
-	std::string pwd;
+	std::string pwd;	
+};*/
+
+class Connection
+{
+private: SOCKET m_sock;
+		 std::string m_pwd;
+		 
+public:
+	Connection(SOCKET s);
+	~Connection();
+	void setPassword(std::string pw);
+	std::string getPassword();
+	SOCKET getSocket();
+	void closeSocket();
 };
 
 using namespace std;
@@ -28,10 +42,10 @@ private:
 	//int iResult;
 	sockaddr_in addr;
 	static SOCKET sock, client;
-	SockAccept client2;
+	//SockAccept client2;
 	HANDLE handle[MAX_THREADS];
 	PasswdGen pg;
-
+	CRITICAL_SECTION lock;
 
 	int setServerIPstr(std::string serverIP);
 	int setServerPORTstr(int serverPORT);

@@ -1,9 +1,15 @@
-﻿  socket.cpp
-c:\users\sergeii\source\repos\github\tcpserverclient\include\socket.h(61): warning C4091: 'static ': ignored on left of 'Ssocket' when no variable is declared
-c:\users\sergeii\source\repos\github\tcpserverclient\include\socket.cpp(132): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  stdafx.cpp
+  socket.cpp
+c:\users\sergeii\source\repos\github\tcpserverclient\include\socket.h(75): warning C4091: 'static ': ignored on left of 'Ssocket' when no variable is declared
+c:\users\sergeii\source\repos\github\tcpserverclient\include\socket.cpp(178): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.14393.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
-c:\users\sergeii\source\repos\github\tcpserverclient\include\socket.cpp(144): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\sergeii\source\repos\github\tcpserverclient\include\socket.cpp(190): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.14393.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
-c:\users\sergeii\source\repos\github\tcpserverclient\include\socket.cpp(200): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+c:\users\sergeii\source\repos\github\tcpserverclient\include\socket.cpp(255): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
   c:\program files (x86)\windows kits\10\include\10.0.14393.0\um\winsock2.h(1828): note: see declaration of 'inet_addr'
+  PasswdGen.cpp
+c:\users\sergeii\source\repos\github\tcpserverclient\include\passwdgen.cpp(15): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  TCPServer.cpp
+c:\users\sergeii\source\repos\github\tcpserverclient\include\socket.h(75): warning C4091: 'static ': ignored on left of 'Ssocket' when no variable is declared
   TCPServer.vcxproj -> C:\Users\sergeii\Source\Repos\GitHub\TCPServerClient\x64\Debug\TCPServer.exe
